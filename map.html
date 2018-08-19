@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>NYC Map Tiles</title>
+	<style>
+		#tms, #wmts, #xyz {
+      margin-bottom: 10px;
+      width: 400px;
+      height: 175px;
+      border: 1px solid #000;
+    }
+  </style>
+  <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.1.3/build/ol.js"></script>
+  </head>
+<body>
+  <div>tms</div>
+  <div id="tms"></div>
+  <div>xyz</div>
+  <div id="xyz"></div>
+  <div>wmts</div>
+	<div id="wmts"></div>
+	<script>
+    new ol.Map({
+			target: 'tms', 
+			view: new ol.View({
+        center: [-8236053.466742615, 4967206.320292581],
+        zoom: 17
+      }),
+			layers: [new ol.layer.Tile({
+			  source: new ol.source.XYZ({
+          url: 'https://maps.nyc.gov/tms/1.0.0/carto/basemap/{z}/{x}/{-y}.jpg'
+			  })
+		  })]
+    });
+    
+		new ol.Map({
+			target: 'xyz', 
+			view: new ol.View({
+        center: [-8236053.466742615, 4967206.320292581],
+        zoom: 17
+      }),
+			layers: [new ol.layer.Tile({
+			  source: new ol.source.XYZ({
+          url: 'https://maps.nyc.gov/xyz/1.0.0/carto/basemap/{z}/{x}/{y}.jpg'
+        })
+		  })]
+		});
+
+    fetch('https://maps.nyc.gov/wmts/1.0.0/?REQUEST=GetCapabilities')
+      .then(function(response) {
+        return response.text();
+      }).then(function(text) {
+        new ol.Map({
+          target: 'wmts',
+            view: new ol.View({
+            center: [-8236053.466742615, 4967206.320292581],
+            zoom: 17
+          }),
+          layers: [new ol.layer.Tile({
+            source: new ol.source.WMTS(
+              ol.source.WMTS.optionsFromCapabilities(
+                new ol.format.WMTSCapabilities().read(text), 
+                {layer: 'basemap', matrixSet: 'EPSG:900913'}
+              )
+            )
+          })]
+        });
+      });
+	</script>
+</body>
+</html>
