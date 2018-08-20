@@ -1,3 +1,4 @@
+const cdn = require('./cdn')
 const grid = require('ol/tilegrid').createXYZ()
 
 const populateTemplate = (template, zxy) => {
@@ -32,9 +33,6 @@ module.exports = (request, response) => {
       xyz(tileCoord, templates.xyz, urls.xyz)
     })
   }
-  // https://developer.akamai.com/api/core_features/fast_purge/v3.html#postinvalidateurl
-  // const purge = {objects: urls.tms.concat(urls.wmts).concat(urls.xyz)}
-  // console.warn(purge)
-  
+  // cdn(urls.tms.concat(urls.wmts).concat(urls.xyz))
   response.json(urls)
 }
