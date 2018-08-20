@@ -1,7 +1,4 @@
-const grid = require('ol/tilegrid').createXYZ(({
-  minZoom: process.env.MIN_ZOOM || 0, 
-  maxZoom: process.env.MAX_ZOOM || 30
-}))
+const grid = require('ol/tilegrid').createXYZ()
 
 const populateTemplate = (template, zxy) => {
   let url = template
