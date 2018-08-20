@@ -32,5 +32,9 @@ module.exports = (request, response) => {
       xyz(tileCoord, templates.xyz, urls.xyz)
     })
   }
+  // https://developer.akamai.com/api/core_features/fast_purge/v3.html#postinvalidateurl
+  // const purge = {objects: urls.tms.concat(urls.wmts).concat(urls.xyz)}
+  // console.warn(purge)
+  
   response.json(urls)
 }
