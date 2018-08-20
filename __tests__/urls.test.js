@@ -7,9 +7,9 @@ const request = {
   maxz: 17,
   extent: [-8236292.332456007, 4967101.816542972, -8235814.601029224, 4967310.82404219], 
   templates: {
-    tms: ['https://maps.nyc.gov/tms/1.0.0/carto/basemap/${0}/${1}/${2}.png8'],
+    tms: ['https://maps.nyc.gov/tms/1.0.0/carto/basemap/${0}/${1}/${2}.jpg'],
     wmts: ['https://maps.nyc.gov/wmts/1.0.0/?layer=basemap&style=&tilematrixset=EPSG%3A900913&Service=WMTS&Request=GetTile&Version=1.0.0&Format=image%2Fjpeg&TileMatrix=EPSG%3A900913%3A${0}&TileCol=${1}&TileRow=${2}'],
-    xyz: ['https://maps.nyc.gov/xyz/1.0.0/carto/basemap/${0}/${1}/${2}.png8']
+    xyz: ['https://maps.nyc.gov/xyz/1.0.0/carto/basemap/${0}/${1}/${2}.jpg']
   }
 }
 

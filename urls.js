@@ -32,5 +32,6 @@ module.exports = (request, response) => {
       xyz(tileCoord, templates.xyz, urls.xyz)
     })
   }
+  console.log(urls)
   response.json(urls)
 }
