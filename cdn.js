@@ -1,6 +1,7 @@
 const $ = require('jquery')
+// https://developer.akamai.com/api/core_features/fast_purge/v3.html#postinvalidateurl
 
- exports = urls => {
+exports = urls => {
   $.ajax({
     url: '/ccu/v3/invalidate/url/{network}', // ????
     method: 'POST',
@@ -15,4 +16,4 @@ const $ = require('jquery')
       server.close(done)
     }
   })
- } 
+} 
