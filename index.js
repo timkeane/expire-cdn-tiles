@@ -1,6 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-const expire = require('./expire')
+const urls = require('./urls')
 
 const app = express()
 
@@ -12,6 +12,6 @@ app.use((request, response, next) => {
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 
-app.post('/', expire)
+app.post('/', urls)
 
 module.exports = app.listen(process.env.PORT || 3000)

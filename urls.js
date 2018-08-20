@@ -1,4 +1,3 @@
-const cdn = require('./cdn')
 const grid = require('ol/tilegrid').createXYZ()
 
 const populateTemplate = (template, zxy) => {
@@ -33,6 +32,5 @@ module.exports = (request, response) => {
       xyz(tileCoord, templates.xyz, urls.xyz)
     })
   }
-  // cdn(urls.tms.concat(urls.wmts).concat(urls.xyz))
   response.json(urls)
 }
