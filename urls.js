@@ -27,11 +27,11 @@ module.exports = (request, response) => {
   const templates = params.templates
   for (let z = params.minz; z <= params.maxz; z++) {
     grid.forEachTileCoord(params.extent, z, tileCoord => {
-      invert(tileCoord, templates.tms, urls.tms)
-      invert(tileCoord, templates.wmts, urls.wmts)
-      xyz(tileCoord, templates.xyz, urls.xyz)
+      const coord = [tileCoord[0], tileCoord[1], - tileCoord[2] - 1]
+      invert(coord, templates.tms, urls.tms)
+      xyz(coord, templates.wmts, urls.wmts)
+      xyz(coord, templates.xyz, urls.xyz)
     })
   }
-  console.log(urls)
   response.json(urls)
 }

@@ -23,7 +23,6 @@ test('tms urls', () => {
   getUrls({body: request}, mockResponse)
   
   const urls = mockResponse.json.mock.calls[0][0].tms
-  console.warn(urls);
   
   expect(urls.length).toBe(6)
   expect($.inArray('https://maps.nyc.gov/tms/1.0.0/carto/basemap/17/38598/81782.jpg', urls) > -1).toBe(true)
@@ -40,7 +39,6 @@ test('wmts urls', () => {
   getUrls({body: request}, mockResponse)
   
   const urls = mockResponse.json.mock.calls[0][0].wmts
-  console.warn(urls);
   
   expect(urls.length).toBe(6)
   expect($.inArray('https://maps.nyc.gov/wmts/1.0.0/?layer=basemap&style=&tilematrixset=EPSG%3A900913&Service=WMTS&Request=GetTile&Version=1.0.0&Format=image%2Fjpeg&TileMatrix=EPSG%3A900913%3A17&TileCol=38598&TileRow=49289', urls) > -1).toBe(true)
@@ -57,7 +55,6 @@ test('xyz urls', () => {
   getUrls({body: request}, mockResponse)
   
   const urls = mockResponse.json.mock.calls[0][0].xyz
-  console.warn(urls);
   
   expect(urls.length).toBe(6)
   expect($.inArray('https://maps.nyc.gov/xyz/1.0.0/carto/basemap/17/38599/49289.jpg', urls) > -1).toBe(true)
